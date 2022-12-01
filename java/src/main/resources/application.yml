@@ -1,0 +1,5 @@
+server.port: ${HTTP_PORT:8080}
+infobip:
+  api-host: ${INFOBIP_API_HOST:api.infobip.com}
+  api-key: ${INFOBIP_API_KEY:85eac8181c0dd2898c71ef369d6e63a0-2454f319-e92a-422c-88aa-50d14f5054df}
+  application-id: ${INFOBIP_APP_ID:637f92f14cc0735770ec67df}

@@ -1,0 +1,19 @@
+POST http://localhost:8080/call
+Content-Type: application/json
+
+{
+  "phoneNumber": "38761456296",
+  "callerId": "38761981753"
+}
+
+###
+
+POST http://localhost:8080/connect
+Content-Type: application/json
+
+{
+  "callIds": [
+    "3c115a55-e836-4975-8cc5-d422396b3663",
+    "e39cf702-9847-4ab5-824b-3ed64bad2fc2"
+  ]
+}
