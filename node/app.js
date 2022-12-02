@@ -12,7 +12,7 @@ app.use((req, res, next) => {
 });
 const AUTH = 'App ' + config.INFOBIP_API_KEY;
 
-app.post('/call', (req, res) => {
+app.post('/call', async (req, res) => {
     let callerId = req.body.callerId;
     let phoneNumber = req.body.phoneNumber;
     let body = JSON.stringify({
@@ -23,55 +23,52 @@ app.post('/call', (req, res) => {
             phoneNumber: phoneNumber
         }
     });
-    https.post(config.INFOBIP_API_HOST, "/calls/1/calls", body, AUTH)
-        .then(createCallResponse => {
-            console.log('Received response: ' + createCallResponse);
-            let response = JSON.parse(createCallResponse);
-            res.json({
-                id: response.id,
-                state: response.state
-            });
-        })
-        .catch(err => {
-            console.error(err);
-            res.sendStatus(500);
+    try {
+        const createCallResponse = await https.post(config.INFOBIP_API_HOST, "/calls/1/calls", body, AUTH);
+        console.log('Received response: ' + createCallResponse);
+        let response = JSON.parse(createCallResponse);
+        res.json({
+            id: response.id,
+            state: response.state
         });
+    } catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+    }
 });
 
-app.post('/connect', (req, res) => {
+app.post('/connect', async (req, res) => {
     let callIds = req.body.callIds;
     let body = JSON.stringify({
         callIds: callIds
     });
-    https.post(config.INFOBIP_API_HOST, "/calls/1/connect", body, AUTH)
-        .then(connectCallsResponse => {
-            console.log('Received response: ' + connectCallsResponse);
-            let response = JSON.parse(connectCallsResponse);
-            res.json({
-                conferenceId: response.id
-            });
-        })
-        .catch(err => {
-            console.error(err);
-            res.sendStatus(500);
+    try {
+        const connectCallsResponse = await https.post(config.INFOBIP_API_HOST, "/calls/1/connect", body, AUTH);
+        console.log('Received response: ' + connectCallsResponse);
+        let response = JSON.parse(connectCallsResponse);
+        res.json({
+            conferenceId: response.id
         });
+    } catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+    }
 });
 
-app.post('/call-received', (req, res) => {
+app.post('/call-received', async (req, res) => {
     console.log("Received event: " + JSON.stringify(req.body));
     let callId = req.body.callId;
-    https.post(config.INFOBIP_API_HOST, "/calls/1/calls/" + callId + "/answer", "{}", AUTH)
-        .then(answerResponse => {
-            console.log('Received response: ' + answerResponse);
-            res.sendStatus(200)
-        })
-        .catch(err => {
-            console.error(err);
-            res.sendStatus(500);
-        });
+    try {
+        const answerResponse = await https.post(config.INFOBIP_API_HOST, "/calls/1/calls/" + callId + "/answer", "{}", AUTH);
+        console.log('Received response: ' + answerResponse);
+        res.sendStatus(200)
+    } catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+    }
 });
 
-app.post('/event', (req, res) => {
+app.post('/event', async (req, res) => {
     console.log("Received event: " + JSON.stringify(req.body));
     let type = req.body.type;
     if (type !== 'CALL_ESTABLISHED') {
@@ -84,15 +81,14 @@ app.post('/event', (req, res) => {
         text: "Hello world",
         language: "en"
     });
-    https.post(config.INFOBIP_API_HOST, "/calls/1/calls/" + callId + "/say", body, AUTH)
-        .then(sayResponse => {
-            console.log('Received response: ' + sayResponse);
-            res.sendStatus(200)
-        })
-        .catch(err => {
-            console.error(err);
-            res.sendStatus(500);
-        });
+    try {
+        const sayResponse = await https.post(config.INFOBIP_API_HOST, "/calls/1/calls/" + callId + "/say", body, AUTH);
+        console.log('Received response: ' + sayResponse);
+        res.sendStatus(200)
+    } catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+    }
 });
 
 app.listen(config.HTTP_PORT, () => console.log('InfobipCallsShowcase started at: http://%s:%s', 'localhost', config.HTTP_PORT));
