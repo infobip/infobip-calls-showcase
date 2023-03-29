@@ -1,0 +1,6 @@
+{
+  "HTTP_PORT": 8080,
+  "INFOBIP_API_HOST": "api.infobip.com",
+  "INFOBIP_API_KEY": "",
+  "INFOBIP_APP_ID": ""
+}
