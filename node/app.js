@@ -116,7 +116,7 @@ const server = app.listen(conf('HTTP_PORT'), () => {
 async function callPhone(callerId, phoneNumber) {
     console.log('Calling %s...', phoneNumber);
     let body = JSON.stringify({
-        applicationId: conf('INFOBIP_APP_ID'),
+        callsConfigurationId: conf('INFOBIP_CALLS_CONFIGURATION_ID'),
         from: callerId,
         endpoint: {
             type: "PHONE",
