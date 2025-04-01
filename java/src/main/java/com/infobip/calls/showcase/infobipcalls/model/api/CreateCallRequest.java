@@ -14,8 +14,7 @@ public class CreateCallRequest implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
-
-    private String applicationId;
+    private String callsConfigurationId;
     private Endpoint endpoint;
     private String from;
 

@@ -1,6 +1,5 @@
 package com.infobip.calls.showcase.startup;
 
-import com.infobip.calls.showcase.InfobipCallsShowcase;
 import com.infobip.calls.showcase.infobipcalls.model.client.CallRequest;
 import com.infobip.calls.showcase.infobipcalls.model.client.ConnectRequest;
 import com.infobip.calls.showcase.infobipcalls.CallsApiClient;

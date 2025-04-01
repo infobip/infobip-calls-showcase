@@ -27,8 +27,8 @@ ngrok http 8080
 in your terminal, and you will get nice public URL.
 
 #### Step 3
-Create Calls Application (or [edit](https://www.infobip.com/docs/api/channels/voice/calls/calls-applications/update-calls-application) one you previously created) with new URL obtained via ngrok.  
-_(Don't forget to replace `${your-ngrok-id}` with your unique ID obtained via `ngrok http 8080`, `${your-application-id}` and `${your-api-key}`)_
+Create Calls Configuration (or [edit](https://www.infobip.com/docs/api/channels/voice/calls/calls-applications/update-calls-application) one you previously created) with new URL obtained via ngrok.  
+_(Don't forget to replace `${your-ngrok-id}` with your unique ID obtained via `ngrok http 8080`, `${your-calls-configuration-id}` and `${your-api-key}`)_
 ```shell
 curl -X PUT https://api.infobip.com/calls/1/applications/${your-application-id} \
   -H 'Authorization: App ${your-api-key}' \
@@ -45,7 +45,7 @@ curl -X PUT https://api.infobip.com/calls/1/applications/${your-application-id} 
   }'
 ```
 #### Step 4
-Purchase your own DID number and set it up with `applicationId` from Step 3.  
+Purchase your own DID number and set it up with `callsConfigurationId` from Step 3.  
 You can set up your own number via our [public endpoint](https://www.infobip.com/docs/api/platform/numbers/my-numbers/number-management/create-voice-setup-on-number).
 
 In application logs you can find new entry when new call is received. There you can find `callId` of your inbound call.  
