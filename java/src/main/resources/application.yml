@@ -2,4 +2,4 @@ server.port: ${HTTP_PORT:8080}
 infobip:
   api-host: ${INFOBIP_API_HOST:api.infobip.com}
   api-key: ${INFOBIP_API_KEY}
-  application-id: ${INFOBIP_APP_ID}
+  calls-configuration-id: ${INFOBIP_CALLS_CONFIGURATION_ID}

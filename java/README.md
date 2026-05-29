@@ -11,8 +11,8 @@ Clone this application from [github repository](https://github.com/infobip/infob
 git clone git@github.com:infobip/infobip-calls-showcase.git
 ```
 #### Step 2
-Edit [`application.yml`](./src/main/resources/application.yml) file, set your own values for `infobip.api-key` and `infobip.application-id` keys.  
-You can also leave file untouched, and set `INFOBIP_API_KEY` and `INFOBIP_APP_ID` environment variables prior to starting application in step 4.
+Edit [`application.yml`](./src/main/resources/application.yml) file, set your own values for `infobip.api-key` and `infobip.calls-configuration-id` keys.  
+You can also leave file untouched, and set `INFOBIP_API_KEY` and `INFOBIP_CALLS_CONFIGURATION_ID` environment variables prior to starting application in step 4.
 
 #### Step 3
 Compile and build application using this command:

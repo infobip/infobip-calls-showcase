@@ -17,8 +17,8 @@ npm install
 ```
 
 #### Step 3
-Edit [`config.json`](./config.json) file, set your own values for `INFOBIP_API_KEY` and `INFOBIP_APP_ID` keys.  
-You can also leave file untouched, and set `INFOBIP_API_KEY` and `INFOBIP_APP_ID` environment variables prior to starting application in step 4.
+Edit [`config.json`](./config.json) file, set your own values for `INFOBIP_API_KEY` and `INFOBIP_CALLS_CONFIGURATION_ID` keys.  
+You can also leave file untouched, and set `INFOBIP_API_KEY` and `INFOBIP_CALLS_CONFIGURATION_ID` environment variables prior to starting application in step 4.
 
 #### Step 4
 Start application with chosen mode. You need to pass `--scenario` parameter with value `inbound` or `outbound`.  
